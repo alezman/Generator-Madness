@@ -9,11 +9,11 @@ function format(x) {
 }
 
 var generation = window.setInterval(function(){
-    addPoints(player.gen1)
-    player.gen1 = player.gen1.add(player.gen2)
-    player.gen2 = player.gen2.add(player.gen3)
-    player.gen3 = player.gen3.add(player.gen4)
-    player.gen4 = player.gen4.add(player.gen5)
+    addPoints(player.gen1.mul(player.mul1))
+    player.gen1 = player.gen1.add(player.gen2.mul(player.mul2))
+    player.gen2 = player.gen2.add(player.gen3.mul(player.mul3))
+    player.gen3 = player.gen3.add(player.gen4.mul(player.mul4))
+    player.gen4 = player.gen4.add(player.gen5.mul(player.mul5))
     document.getElementById('player.gen1').innerHTML = format(player.gen1);
     document.getElementById('player.gen2').innerHTML = format(player.gen2);
     document.getElementById('player.gen3').innerHTML = format(player.gen3);

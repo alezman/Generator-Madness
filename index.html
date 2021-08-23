@@ -3,20 +3,22 @@
 <head>
 	<title>Generator Madness</title>
 </head>
-<body style="background-color: rgb(43, 255, 0);">
-<p style="text-align: center;">Generator Madness v1.0</p><button onclick="wipesave()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Click to Wipe Save! (THERE'S NO UNDO)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+<body onload="load()"">
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+<p style="text-align: center;">Generator Madness v1.1</p>
 
-<p style="text-align: center; font-size: 20px; margin: auto"><strong>Points: </strong><span id="player.points">0</span></p>
+<p style="text-align: center; font-size: 20px; margin: auto; "><strong>Points: </strong><span id="player.points">0</span></p>
 
-<p style="text-align: center;"><strong><button onclick="addPoints(1)" style="font-size: 25px; margin: auto; background-color: rgb(0, 255, 106); width: auto; text-align: center;">Click for 1 point!</button><br><br>
-<p style="text-align: center;">1st Generator &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Amount: <span id="player.gen1"> 0 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Cost: <span id="player.genCost1"> 10.00 </span> | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button onClick="buyGen1()" style="text-align: center;">Buy One</button></p>
-<p style="text-align: center;">2nd Generator &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Amount: <span id="player.gen2"> 0 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Cost: <span id="player.genCost2"> 1.00e3 </span> | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button onClick="buyGen2()" style="text-align: center;">Buy One</button></p>
-<p style="text-align: center;">3rd Generator &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Amount: <span id="player.gen3"> 0 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Cost: <span id="player.genCost3"> 1.00e6 </span> | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button onClick="buyGen3()" style="text-align: center;">Buy One</button></p>
-<p style="text-align: center;">4th Generator &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Amount: <span id="player.gen4"> 0 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Cost: <span id="player.genCost4"> 1.00e10 </span> | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button onClick="buyGen4()" style="text-align: center;">Buy One</button></p>
-<p style="text-align: center;">5th Generator &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Amount: <span id="player.gen5"> 0 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Cost: <span id="player.genCost5"> 5.00e13 </span> | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button onClick="buyGen5()" style="text-align: center;">Buy One</button></p>
-<script type="text/javascript" src="break_infinity.js"></script>
-<script type="text/javascript" src="data/generators.js"></script>
+<p style="text-align: center;"><strong><button onclick="addPoints(new Decimal(1))" style="font-size: 25px; margin: auto; color:blue; background-color:black; width: 100px; border-color: blue; text-align: center; border-radius:33%;">Click for 1 point!</button><br><br>
+<p style="text-align: center;">1st Generator &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Amount: <span id="player.gen1"> 0 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Multiplier: <span id="player.mul1">1</span>x &nbsp;&nbsp;&nbsp;| Cost: <span id="player.genCost1"> 10.00 </span> | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button onClick="buyGen1()" style="text-align: center; border-radius: 33%; color:blue; background-color:black; border-color: blue;">Buy One</button></p>
+<p style="text-align: center;">2nd Generator &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Amount: <span id="player.gen2"> 0 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Multiplier: <span id="player.mul2">1</span>x &nbsp;&nbsp;&nbsp;| Cost: <span id="player.genCost2"> 1.00e3 </span> | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button onClick="buyGen2()" style="text-align: center; border-radius: 33%; color:blue; background-color:black; border-color: blue;">Buy One</button></p>
+<p style="text-align: center;">3rd Generator &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Amount: <span id="player.gen3"> 0 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Multiplier: <span id="player.mul3">1</span>x &nbsp;&nbsp;&nbsp;| Cost: <span id="player.genCost3"> 1.00e6 </span> | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button onClick="buyGen3()" style="text-align: center; border-radius: 33%; color:blue; background-color:black; border-color: blue;">Buy One</button></p>
+<p style="text-align: center;">4th Generator &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Amount: <span id="player.gen4"> 0 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Multiplier: <span id="player.mul4">1</span>x &nbsp;&nbsp;&nbsp;| Cost: <span id="player.genCost4"> 1.00e10 </span> | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button onClick="buyGen4()" style="text-align: center; border-radius: 33%; color:blue; background-color:black; border-color: blue;">Buy One</button></p>
+<p style="text-align: center;">5th Generator &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Amount: <span id="player.gen5"> 0 </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Multiplier: <span id="player.mul5">1</span>x &nbsp;&nbsp;&nbsp;| Cost: <span id="player.genCost5" > 5.00e13 </span> | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button onClick="buyGen5()" style="text-align: center; border-radius: 33%; color:blue; background-color:black; border-color: blue;">Buy One</button></p>
+<link rel="stylesheet" type="text/css" href="css/game.css" />
+<script type="text/javascript" src="break_eternity.js"></script>
 <script type="text/javascript" src="load_functions.js"></script>
+<script type="text/javascript" src="data/generators.js"></script>
 <script type="text/javascript" src="game.js"></script>
 </body>
 </html>
